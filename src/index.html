@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>NwAngular</title>
+  <base href=".">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    window.global = undefined; // can be accessed with window.nw.global
+    window.require = undefined; // can be accessed with window.nw.require
+    window.process = undefined; // can be accessed with window.nw.process
+    var getGlobal = function () {
+      if (typeof self !== 'undefined') { return self; }
+      if (typeof window !== 'undefined') { return window; }
+      if (typeof global !== 'undefined') { return global; }
+      throw new Error('unable to locate global object');
+    };
+    window.globalThis = getGlobal();
+    if (!Array.prototype.flat) {
+      Object.defineProperty(Array.prototype, 'flat',
+        {
+          value: function (depth = 1, stack = []) {
+            for (let item of this) {
+              if (item instanceof Array && depth > 0) {
+                item.flat(depth - 1, stack);
+              }
+              else {
+                stack.push(item);
+              }
+            }
+
+            return stack;
+          }
+        });
+    }
+
+    Object.fromEntries = function fromEntries(iterable) {
+      return [...iterable].reduce((obj, [key, val]) => {
+        obj[key] = val
+        return obj
+      }, {})
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script defer type="module" src="assets/web-gl-render.js"></script>
+  <script defer type="module" src="assets/wcjs-render.js"></script>
+</head>
+
+<body class="mat-typography mat-app-background">
+  <app-root></app-root>
+</body>
+
+</html>

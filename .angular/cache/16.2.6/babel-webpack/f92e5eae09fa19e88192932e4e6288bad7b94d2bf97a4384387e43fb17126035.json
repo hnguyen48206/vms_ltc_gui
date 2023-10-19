@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default function _arrayReduce(reducer, acc, list) {\n  var index = 0;\n  var length = list.length;\n  while (index < length) {\n    acc = reducer(acc, list[index]);\n    index += 1;\n  }\n  return acc;\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

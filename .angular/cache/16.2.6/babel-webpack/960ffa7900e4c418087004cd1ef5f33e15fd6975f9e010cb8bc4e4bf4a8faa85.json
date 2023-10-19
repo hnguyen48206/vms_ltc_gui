@@ -1,0 +1,1 @@
+{"ast":null,"code":"function n() {\n  return (navigator.vendor.match(/apple/i) || \"\").length > 0;\n}\nfunction t() {\n  return (navigator.platform.match(/Win/i) || \"\").length > 0;\n}\nexport { n as isSafari, t as isWindows };\n//# sourceMappingURL=browser.js.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

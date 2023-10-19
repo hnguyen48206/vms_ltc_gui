@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { getCssPropertyValue as r } from \"../utils/css.js\";\nfunction t(t) {\n  return r(\"direction\", t);\n}\nexport { t as getElementLanguageDirection };\n//# sourceMappingURL=utils.js.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

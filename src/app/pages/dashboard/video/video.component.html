@@ -1,0 +1,11 @@
+<form class="example-form">
+  <p>Nhập các link cần test theo thứ tự, cách nhau bằng dấu ,</p>
+  <textarea [(ngModel)]="currentValue" cdkTextareaAutosize cdkAutosizeMinRows="5" placeholder="..."></textarea>
+</form>
+<button (click)="setupPlayers()" mat-raised-button color="warn">Load Players</button>
+
+<ng-conatiner *ngIf="showPlayers">
+  <div style="padding-top: 20px;" #playerList *ngFor="let ivmsplayer of playerConfig">
+    <app-ivmsplayer [config]="ivmsplayer"></app-ivmsplayer>
+  </div>
+</ng-conatiner>

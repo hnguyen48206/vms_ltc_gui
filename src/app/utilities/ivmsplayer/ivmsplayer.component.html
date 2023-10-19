@@ -1,0 +1,54 @@
+<div [class]="config.videoID + '-player-container'">
+  <div [class]="config.videoID + '-player'">
+    <h2 *ngIf="statusTxt.length>0" [class]="config.videoID + '-player-status-txt'">{{statusTxt}}</h2>
+
+    <canvas [attr.id]="config.videoID" style="width: 100%;
+      height:auto"></canvas>
+
+    <div [class]="config.videoID + '-play-btn-big'"></div>
+    <div [class]="config.videoID + '-controls'">
+      <ng-container *ngIf="config.isPlayback">
+        <div [class]="config.videoID + '-time'"><span [class]="config.videoID + '-time-current'"></span><span
+            [class]="config.videoID + '-time-total'"></span></div>
+        <div (click)="setProgress($event)" [class]="config.videoID + '-progress'">
+          <div [class]="config.videoID + '-progress-filled'"></div>
+        </div>
+      </ng-container>
+      <div [class]="config.videoID + '-controls-main'">
+        <div [class]="config.videoID + '-controls-left'">
+
+          <img (click)="recordPlayback()" [class]="config.videoID + '-record-btn'" src="../../../assets/imgs/video_recording.svg" (error) ="changeImgSource($event, 'assets/imgs/video_recording.svg')" />
+          <img (click)="restartPlayer()" [class]="config.videoID + '-reset-btn'" src="../../../assets/imgs/video_refresh.svg" (error) ="changeImgSource($event, 'assets/imgs/video_refresh.svg')"/>
+          <img (click)="snapshotTakingFromRecord()" [class]="config.videoID + '-snapshot-btn'" src="../../../assets/imgs/video_snapshot.svg" (error) ="changeImgSource($event, 'assets/imgs/video_snapshot.svg')"/>
+
+        </div>
+        <div [class]="config.videoID + '-play-btn' + ' ' + config.videoID + '-paused'" (click)="togglePlay()"></div> 
+        <div [class]="config.videoID + '-controls-right'">
+
+          <div *ngIf="config.isPlayback" [class]="config.videoID + '-speed'">
+            <ul [class]="config.videoID + '-speed-list'">
+              <li [class]="config.videoID + '-speed-item'" (click)="setSpeed($event, 0.5)"
+                [id]="config.videoID + '-speed-item-0.5'">0.5x</li>
+              <li [class]="config.videoID + '-speed-item'" (click)="setSpeed($event, 0.75)"
+                [id]="config.videoID + '-speed-item-0.75'">0.75x</li>
+              <li *ngIf="cssStringVar!=null" [ngClass]="cssStringVar" (click)="setSpeed($event, 1)"
+                [id]="config.videoID + '-speed-item-1'">1x</li>
+              <li [class]="config.videoID + '-speed-item'" (click)="setSpeed($event, 1.5)"
+                [id]="config.videoID + '-speed-item-1.5'">1.5x</li>
+              <li [class]="config.videoID + '-speed-item'" (click)="setSpeed($event, 2)"
+                [id]="config.videoID + '-speed-item-2'">2x</li>
+            </ul>
+          </div>
+
+          <div [class]="config.videoID + '-fullscreen'" (click)="toggleFullscreen()">
+            <svg width="30" height="22" viewBox="0 0 30 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M0 0V-1.5H-1.5V0H0ZM0 18H-1.5V19.5H0V18ZM26 18V19.5H27.5V18H26ZM26 0H27.5V-1.5H26V0ZM1.5 6.54545V0H-1.5V6.54545H1.5ZM0 1.5H10.1111V-1.5H0V1.5ZM-1.5 11.4545V18H1.5V11.4545H-1.5ZM0 19.5H10.1111V16.5H0V19.5ZM24.5 11.4545V18H27.5V11.4545H24.5ZM26 16.5H15.8889V19.5H26V16.5ZM27.5 6.54545V0H24.5V6.54545H27.5ZM26 -1.5H15.8889V1.5H26V-1.5Z"
+                transform="translate(2 2)" fill="white" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

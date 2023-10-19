@@ -1,0 +1,1 @@
+{"ast":null,"code":"/**\n * @license\n * Copyright 2022 Google LLC\n * SPDX-License-Identifier: BSD-3-Clause\n */\nconst o = !1;\nexport { o as isServer };\n//# sourceMappingURL=is-server.js.map","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

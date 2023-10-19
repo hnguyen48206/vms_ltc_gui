@@ -1,0 +1,145 @@
+{
+  "ManifestComments": [],
+  "name": "nw-angular",
+  "version": "1.3.0",
+  "main": "http://localhost:8964",
+  "node-remote": "http://localhost:8964",
+  "description": "IVMS",
+  "window": {
+    "width": 960,
+    "height": 600,
+    "min_width": 700,
+    "min_height": 500,
+    "icon": "assets/icon.png",
+    "title": "IVMS"
+  },
+  "webkit": {
+    "plugin": true
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "concurrently \"npm run start:web\" \"wait-on http://localhost:8964 && nw .\"",
+    "start:web": "ng serve --port=8964",
+    "build:win": "npm run build:clean && npm run build:ng && npm run build:nw_win",
+    "build:linux": "npm run build:clean && npm run build:ng && npm run build:nw_linux",
+    "build:clean": "rimraf ./dist-ng ./dist",
+    "build:ng": "ng build --prod --output-path ./dist-ng",
+    "build:nw_win": "build --tasks win-x64 --mirror https://dl.nwjs.io/ .",
+    "build:nw_linux": "build --tasks linux-x64 --mirror https://dl.nwjs.io/ .",
+    "generate": "ng generate",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "16.x.x",
+    "@angular/cdk": "^16.2.9",
+    "@angular/forms": "x6.x.x",
+    "@cds/core": "^6.7.0",
+    "@clr/angular": "^16.0.1",
+    "@clr/icons": "^13.0.2",
+    "@clr/ui": "^16.0.1",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "angular-gridster2": "^16.0.0",
+    "fix-webm-duration": "^1.0.5",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^16.2.6",
+    "@angular-eslint/builder": "16.2.0",
+    "@angular-eslint/eslint-plugin": "16.2.0",
+    "@angular-eslint/eslint-plugin-template": "16.2.0",
+    "@angular-eslint/schematics": "16.2.0",
+    "@angular-eslint/template-parser": "16.2.0",
+    "@angular/animations": "^16.2.6",
+    "@angular/cli": "^16.2.6",
+    "@angular/common": "^16.2.6",
+    "@angular/compiler": "^16.2.6",
+    "@angular/compiler-cli": "^16.2.6",
+    "@angular/core": "^16.2.6",
+    "@angular/forms": "^16.2.6",
+    "@angular/language-service": "^16.2.6",
+    "@angular/platform-browser": "^16.2.6",
+    "@angular/platform-browser-dynamic": "^16.2.6",
+    "@angular/router": "^16.2.6",
+    "@types/dom-mediacapture-record": "^1.0.18",
+    "@types/jasmine": "^5.1.1",
+    "@types/jasminewd2": "^2.0.12",
+    "@types/node": "^20.8.7",
+    "@typescript-eslint/eslint-plugin": "6.8.0",
+    "@typescript-eslint/parser": "6.8.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.51.0",
+    "eslint-plugin-import": "latest",
+    "eslint-plugin-jsdoc": "latest",
+    "eslint-plugin-prefer-arrow": "latest",
+    "jasmine-core": "^5.1.1",
+    "jasmine-spec-reporter": "^7.0.0",
+    "karma": "^6.4.2",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage-istanbul-reporter": "^3.0.3",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.1.0",
+    "nwjs-builder-phoenix": "^1.15.0",
+    "nwjs-types": "^1.0.0",
+    "protractor": "^7.0.0",
+    "rimraf": "^5.0.5",
+    "rxjs": "^7.8.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "4.9.3",
+    "wait-on": "^7.0.1",
+    "zone.js": "^0.13.0"
+  },
+  "chromium-args": "--enable-spell-checking --child-clean-exit --enable-webgl --ignore-gpu-blacklist --disable-pinch",
+  "build": {
+    "nwVersion": "0.18.7",
+    "nwFlavor": "sdk",
+    "packed": true,
+    "files": [
+      "**/*"
+    ],
+    "excludes": [
+      "e2e/**/*",
+      "src/**/*",
+      ".editorconfig",
+      ".gitignore",
+      "angular.json",
+      "browserslist",
+      "karma.conf.js",
+      "package-lock.json",
+      "screenshot.png",
+      "tsconfig.app.json",
+      "tsconfig.json",
+      "tsconfig.spec.json",
+      "tslint.json"
+    ],
+    "strippedProperties": [
+      "ManifestComments",
+      "node-remote",
+      "scripts",
+      "devDependencies",
+      "build"
+    ],
+    "overriddenProperties": {
+      "main": "dist-ng/index.html",
+      "node-remote": ""
+    },
+    "win": {
+      "icon": "assets/icon-256.ico"
+    },
+    "mac": {
+      "icon": "assets/icon.icns"
+    },
+    "nsis": {
+      "icon": "assets/icon-256.ico",
+      "unIcon": "assets/icon.ico",
+      "languages": [
+        "English"
+      ],
+      "diffUpdaters": false,
+      "hashCalculation": true
+    }
+  }
+}

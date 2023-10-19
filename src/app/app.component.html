@@ -1,0 +1,12 @@
+<clr-alert>
+    <clr-alert-item>
+      <span class="alert-text">
+        Congratulations, you have installed Clarity!
+      </span>
+    </clr-alert-item>
+  </clr-alert>
+<app-header *ngIf="headerAndFooter"></app-header>
+
+<router-outlet></router-outlet>
+
+<app-footer *ngIf="headerAndFooter"></app-footer>
